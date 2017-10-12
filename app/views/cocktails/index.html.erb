@@ -1,2 +1,16 @@
-<h1>Cocktails#index</h1>
-<p>Find me in app/views/cocktails/index.html.erb</p>
+<% if !@cocktails.blank? %>
+  <% for item in @cocktails %>
+    <p><%= link_to "#{item.name}", cocktail_path(item) %></p>
+      <ul>
+      <% if !Dose.where(cocktail_id:item.id).blank? %>
+        <% for dose in Dose.where(cocktail_id:item.id) %>
+          <li><%= dose.description %></li>
+        <% end %>
+      <% else %>
+        <li>No doses listed. <%= link_to "Add one!", new_cocktail_dose_path(item) %></li>
+      <% end %>
+      </ul>
+  <% end %>
+<% else %>
+  <p>None yet :( <%= link_to "Add one!", new_cocktail_path %></p>
+<% end %>

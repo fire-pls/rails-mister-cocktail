@@ -5,17 +5,19 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+if Ingredient.first.nil?
+  3.times do |_|
+    Ingredient.create(name:"ingredient#{_ + rand(1000)}")
+  end
+end
 
-5.times do |_|
+
+10.times do |_|
   cocktail = Cocktail.new(name:"cocktail#{_ + rand(1000)}")
   cocktail.save
-  ingredient = Ingredient.new(name:"ingredient#{_ + rand(1000)}")
-  ingredient.save
-  dose = Dose.new(description: "hello")
+  ingredient = Ingredient.all.sample
+  dose = Dose.new(description: "seed dose")
   dose.ingredient = ingredient
   dose.cocktail = cocktail
   dose.save
-  p ingredient
-  p cocktail
-  p dose
 end

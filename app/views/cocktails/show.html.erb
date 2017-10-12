@@ -1,2 +1,15 @@
 <h1>Cocktails#show</h1>
 <p>Find me in app/views/cocktails/show.html.erb</p>
+<hr>
+<% if !@doses.blank? %>
+ <h2>Doses in <%= @cocktail.name %>:</h2>
+ <ul>
+  <% for item in @doses %>
+    <% tmping = Ingredient.find(item.ingredient_id)%>
+    <li><%= item.description %>(id:<%= tmping.id %> <%= tmping.name %>) | <%= link_to "Edit this dose", edit_dose_path(item) %> | <%= link_to "Delete this dose", dose_path(item), method: :delete %></li>
+  <% end %>
+<% else %>
+  <li>No doses listed for this cocktail</li>
+<% end %>
+</ul>
+<%= link_to "Add new dose", new_cocktail_dose_path(@cocktail) %>
