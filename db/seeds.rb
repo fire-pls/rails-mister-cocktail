@@ -11,7 +11,7 @@ require 'faker'
 
 if Ingredient.first.nil?
   json_list = JSON.parse(open("http://www.thecocktaildb.com/api/json/v1/1/list.php?i=list").read, symbolize_names: true)
-  json_list[:drinks].each do ingredient
+  json_list[:drinks].each do |ingredient|
     Ingredient.create(name:"#{ingredient[:strIngredient1]}")
   end
 end
