@@ -1,6 +1,3 @@
-<h1>Cocktails#show</h1>
-<p>Find me in app/views/cocktails/show.html.erb</p>
-<hr>
 <% if @cocktail.photo? %>
   <p></p>
   <%= cl_image_tag @cocktail.photo.path, height: 400, width: 300, crop: :fit %>

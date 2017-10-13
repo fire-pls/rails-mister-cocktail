@@ -1,0 +1,19 @@
+<div class="col-xs-12 col-sm-6 col-md-4">
+  <div class="entire-card">
+    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path cocktail.photo.path, height: 400, width: 300, crop: :fit %>')">
+      <div class="card-description">
+        <h2><%= cocktail.name %></h2>
+        <p>placeholder text</p>
+      </div>
+      <%= link_to "", cocktail_path(cocktail), class: "card-link" %>
+    </div>
+      <div class="card-bottom text-center">
+        <% dosecount = cocktail.doses.length %>
+        <% if !cocktail.doses.blank? %>
+          <%= link_to "Has #{dosecount} dose#{dosecount > 1 ? '' : 's'}", dose_path(cocktail), class: "card-bottom-text" %>
+        <% else %>
+          <%= link_to "No doses, add one.", new_cocktail_dose_path(cocktail), class: "card-bottom-text" %>
+        <% end %>
+      </div>
+  </div>
+</div>
