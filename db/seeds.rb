@@ -10,9 +10,9 @@ require 'open-uri'
 require 'faker'
 
 if Ingredient.first.nil?
-  json_list = JSON.parse(open("http://www.thecocktaildb.com/api/json/v1/1/list.php?i=list").read)
-  json_list.drinks.each do ingredient_id
-    Ingredient.create(name:"#{ingredient_id.strIngredient1}")
+  json_list = JSON.parse(open("http://www.thecocktaildb.com/api/json/v1/1/list.php?i=list").read, symbolize_names: true)
+  json_list[:drinks].each do ingredient
+    Ingredient.create(name:"#{ingredient[:strIngredient1]}")
   end
 end
 
