@@ -1,4 +1,4 @@
-<h1>Doses#edit</h1>
+<p>Change value: <strong><%= @dose.description %></strong></p>
 <%= simple_form_for [@cocktail, @dose] do |f| %>
   <%= f.input :description, label: "Description" %>
   <%= f.input :ingredient_id, collection: Ingredient.all %>
