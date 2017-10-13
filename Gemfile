@@ -63,3 +63,6 @@ gem "autoprefixer-rails"
 
 #security
 gem 'figaro'
+
+#image handling
+gem 'cloudinary'
