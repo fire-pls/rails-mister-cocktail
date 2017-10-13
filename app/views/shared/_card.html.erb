@@ -10,7 +10,7 @@
       <div class="card-bottom text-center">
         <% dosecount = cocktail.doses.length %>
         <% if !cocktail.doses.blank? %>
-          <%= link_to "Has #{dosecount} dose#{dosecount > 1 ? '' : 's'}", dose_path(cocktail), class: "card-bottom-text" %>
+          <%= link_to "Has #{dosecount} dose#{dosecount > 1 ? 's' : ''}", dose_path(cocktail), class: "card-bottom-text" %>
         <% else %>
           <%= link_to "No doses, add one.", new_cocktail_dose_path(cocktail), class: "card-bottom-text" %>
         <% end %>
