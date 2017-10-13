@@ -14,6 +14,7 @@ end
 
 10.times do |_|
   cocktail = Cocktail.new(name:"cocktail#{_ + rand(1000)}")
+  cocktail.photo_url = ("http://lorempixel.com/400/300/")
   cocktail.save
   ingredient = Ingredient.all.sample
   dose = Dose.new(description: "seed dose")

@@ -1,19 +1,25 @@
 
 <h1>All Cocktails</h1>
 <%= link_to "Add new cocktail", new_cocktail_path %>
+<hr>
 <% if !@cocktails.blank? %>
-  <% for item in @cocktails %>
-    <p><%= link_to "#{item.name}", cocktail_path(item) %></p>
-      <ul>
-      <% if !Dose.where(cocktail_id:item.id).blank? %>
-        <% for dose in Dose.where(cocktail_id:item.id) %>
-          <li><%= dose.description %></li>
-        <% end %>
-      <% else %>
-        <li>No doses listed. <%= link_to "Add one!", new_cocktail_dose_path(item) %></li>
-      <% end %>
-      </ul>
+<div class="container">
+  <div class="row">
+  <% for cocktail in @cocktails %>
+  <div class="col-xs-12 col-sm-6 col-md-4">
+    <div class="card" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.2)), url('<%= cl_image_path cocktail.photo.path, height: 400, width: 300, crop: :fit %>')">
+  <div class="card-description">
+    <h2><%= cocktail.name %></h2>
+    <p>placeholder text</p>
+  </div>
+  <%= link_to "", cocktail_path(cocktail), class: "card-link"  %>
+  </div>
+  </div>
   <% end %>
+  </div>
+</div>
 <% else %>
-  <p>None yet :( <%= link_to "Add one!", new_cocktail_path %></p>
+  <p>No cocktails :( <%= link_to "Add one here.", new_cocktail_path %></p>
 <% end %>
+
+
