@@ -1,6 +1,9 @@
-<% if @cocktail.photo? %>
-  <p></p>
-  <%= cl_image_tag @cocktail.photo.path, height: 400, width: 300, crop: :fit %>
+<% if @cocktail.photos.any? %>
+  <hr>
+  <% @cocktail.photos.each do |photo| %>
+    <%= cl_image_tag photo.path, height: 400, width: 300, crop: :fit %>
+  <% end %>
+  <hr>
 <% end %>
 <% if !@doses.blank? %>
  <h2>Doses in <%= @cocktail.name %>:</h2>

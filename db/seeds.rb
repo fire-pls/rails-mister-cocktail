@@ -19,7 +19,7 @@ end
 
 10.times do |_|
   cocktail = Cocktail.new(name:"#{Faker::Hipster.sentence(3)}")
-  cocktail.photo_url = ("http://lorempixel.com/400/300/")
+  cocktail.photo_urls = ["http://lorempixel.com/400/300/","http://lorempixel.com/400/300/"]
   cocktail.save
   ingredient = Ingredient.all.sample
   dose = Dose.new(description: "#{rand(100)}mL")
